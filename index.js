@@ -25,7 +25,9 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/post", postRoute);
 app.use("/api/v1/message", messageRoute);
 
-
+app.use("api/v1/ping", (req, res) => {
+    res.send("Server is running");
+});
 
 server.listen(port, () => {
     connectDB();
