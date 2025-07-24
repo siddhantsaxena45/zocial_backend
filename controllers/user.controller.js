@@ -69,7 +69,7 @@ export const login = async (req, res) => {
             posts: populatedPost,
             bookmarks: user.bookmarks
         }
-        return res.cookie("token", token, { httpOnly: true, sameSite: "none", secure: true, maxAge:  60 * 1000 }).status(200).json({ message: `${user.username} logged in successfully`, success: true, user });
+        return res.cookie("token", token, { httpOnly: true, sameSite: "none", secure: true, maxAge:  30 * 24 * 60* 60 * 1000 }).status(200).json({ message: `${user.username} logged in successfully`, success: true, user });
 
 
     }
@@ -229,7 +229,7 @@ export const googleLogin = async (req, res) => {
             httpOnly: true,
             sameSite: "none",  // Required for cross-site cookie sharing
             secure: true,      // Required for HTTPS
-            maxAge:  60 * 1000, // 1 day
+            maxAge: 30 * 24 * 60* 60 * 1000, // 30 days
         })
             .status(200)
             .json({
