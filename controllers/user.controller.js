@@ -229,7 +229,7 @@ export const googleLogin = async (req, res) => {
             httpOnly: true,
             sameSite: "none",  // Required for cross-site cookie sharing
             secure: true,      // Required for HTTPS
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            maxAge:  60 * 1000, // 1 day
         })
             .status(200)
             .json({
