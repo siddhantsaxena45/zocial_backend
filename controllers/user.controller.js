@@ -69,7 +69,7 @@ export const login = async (req, res) => {
             posts: populatedPost,
             bookmarks: user.bookmarks
         }
-        return res.cookie("token", token, { httpOnly: true, sameSite: "none", secure: true, maxAge: 1 * 24 * 60 * 60 * 1000 }).status(200).json({ message: `${user.username} logged in successfully`, success: true, user });
+        return res.cookie("token", token, { httpOnly: true, sameSite: "none", secure: true, maxAge:  60 * 1000 }).status(200).json({ message: `${user.username} logged in successfully`, success: true, user });
 
 
     }
@@ -239,6 +239,6 @@ export const googleLogin = async (req, res) => {
             });
     } catch (error) {
         console.error("Google login error:", error);
-        res.status(500).json({ message: "Google login failed", success: false });
+        res.status(401).json({ message: "Google login failed", success: false });
     }
 };
